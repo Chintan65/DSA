@@ -8,6 +8,7 @@ int main(){
     // array as they were in the original array.
     // It is an in-place sort, meaning it does not require any extra space. 
     // Time complexity: O(n^2)
+    // Time complexity : best case - O(n)
     // Space complexity: O(1)
 
     vector<int> v = {64, 25, 12, 22, 11};
@@ -16,6 +17,24 @@ int main(){
     for(int i=0;i<n;i++) cout << v[i] << " ";
     cout << endl;
     cout << "bubble sort calculation" << endl;
+    bool sp;
+    for(int i = n-1;i > 0;i--){
+        sp = true;
+        for(int j=0;j<i;j++){
+            if(v[j] > v[j+1]){
+                swap(v[j],v[j+1]);
+                sp = false;
+            }
+        }
+        if(sp) break;
+        cout << "step number - " << n - (i) << " : - ";
+        for(int i=0;i<n;i++) cout << v[i] << " ";
+        cout << endl;
+
+    }
+    cout << "sorted final erray" << endl;
+    for(int i=0;i<n;i++) cout << v[i] <<  " ";
+    cout << endl;
 
 
 }

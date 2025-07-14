@@ -22,9 +22,6 @@ int main(){
 
 
 
-    /*
-    quick sort vs merge sort  - 
-    */
 
 
 

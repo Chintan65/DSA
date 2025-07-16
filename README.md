@@ -15,3 +15,5 @@
 [Merge sort](merge_sort.cpp)
 
 [Quick sort](quick_sort.cpp)
+
+[Linear search](linear_search.cpp)

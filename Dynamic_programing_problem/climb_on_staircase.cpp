@@ -12,7 +12,5 @@ int main(){
         cout << i << " - " << dp[i] << endl;
     }
     cout << dp[n] << endl; // number of ways to reach at top (nth level)
-    // can be done in constante space also
-    
-    
+    // can be done in constante space also  
 }

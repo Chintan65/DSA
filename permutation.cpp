@@ -11,8 +11,7 @@ void helper(vector<int> &v, int i,int n, vector<vector<int>> &result) {
         swap(v[i], v[j]); // backtrack to restore the original array
     }
     // this will generate all possible permutations of the array
-    // by swapping each element with the current index and recursively calling the function
-    
+    // by swapping each element with the current index and recursively calling the function  
 }
 vector<vector<int>> All_permutation(vector<int> v){
     vector<vector<int>> result;
@@ -57,6 +56,40 @@ int main(){
         for(auto &i:it) cout << i << " ";
         cout << endl;   
     }
+
+    // next_permutation - code 
+    // need to find first dip from right side like which decrese 
+    // from that point to right need to find next just bigger point 
+    // swaping with that point and then reverse the right side
+    // this will give the next permutation in lexicographical order
+
+    vector<int> vv = {2,1,5,4,3,0,0};
+    sort(vv.rbegin(), vv.rend()); 
+    vector<int> vv_copy = vv;
+    int nn = vv.size();
+    int i_dip = nn - 2;
+    for(;i_dip >= 0; i_dip--){
+        if(vv[i_dip] < vv[i_dip + 1]) break; // find first dip from right side
+    }
+    int i_next = nn - 1;
+    for(;i_next > i_dip;i_next--){
+        if(vv[i_next] > vv[i_dip]) break; // find next just bigger point
+    }
+    cout << "i_dip: " << i_dip << " i_next: " << i_next << endl;
+    if(i_dip>=0) swap(vv[i_dip], vv[i_next]); // swap the dip with next just bigger point
+    reverse(vv.begin() + i_dip + 1, vv.end());
+    // reverse the right side to get the next permutation in lexicographical order
+    cout << "next permutation using code" << endl;
+    for(int i=0;i<nn;i++) cout << vv[i] << " ";
+    cout << endl;
+    next_permutation(vv_copy.begin(), vv_copy.end());
+    cout << "next permutation using STL" << endl;   
+    for(int i=0;i<nn;i++) cout << vv_copy[i] << " ";
+    cout << endl;
+    // both should give same output
+
+
+
 
 
 

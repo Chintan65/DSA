@@ -11,7 +11,14 @@ class Solution{
                 i++;
             }
             else {
-                if(nums[i] > 2*nums[j]) reverse_pair += (m - i + 1);
+                int k = i;
+                while( k <= m){
+                    if(nums[k] > 2*nums[j])
+                        reverse_pair += (m - k + 1); // Count reverse pairs
+                        break;
+                    k++;
+                }
+
                 tp.push_back(nums[j]);
                 j++;
             }

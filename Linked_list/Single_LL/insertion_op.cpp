@@ -43,16 +43,23 @@ Node* InsertAtTail(Node* head, int x){
     return head;
 }
 Node* InsertAtkthPlace(Node* head,int x,int k){
+    if(head == nullptr and k == 1){
+        Node* temp = new Node(x);
+        return temp;
+    }   
+    else if(head == nullptr){
+        return nullptr;
+    }   
     if(k == 1){
         Node* temp = new Node(x);
         temp->next = head;
         return temp;
     }
     Node* tp = head;
-    int cnt = 1;
-    while(tp->next != nullptr){
+    int cnt = 0;
+    while(tp != nullptr){
         cnt++;
-        if(cnt == k){
+        if(cnt == k-1){
             Node* temp = new Node(x);
             temp -> next = tp -> next;
             tp -> next = temp;
@@ -60,10 +67,23 @@ Node* InsertAtkthPlace(Node* head,int x,int k){
         }
         tp = tp -> next;
     }
-    Node* temp = new Node(x);
-    tp -> next = temp;
     return head;
-
+}
+Node* InsertBeforeValueK(Node* head,int x,int k){
+    if(head == nullptr) return nullptr;
+    if(head -> data == k){
+        Node* temp = new Node(x);
+        temp -> next = head;
+        return temp;
+    }
+    Node* temp = head;
+    while(temp -> next -> data != k){
+        temp = temp -> next;
+    }
+    Node* tp = new Node(x);
+    tp -> next = temp -> next;
+    temp -> next = tp;
+    return head;
 }
 int main(){
     ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -81,9 +101,14 @@ int main(){
     cout << "Linked List: ";
     PrintLinkedList(head);
     cout << "Inserting at kth element" << endl;
-    head = InsertAtkthPlace(head,500,15);
+    head = InsertAtkthPlace(head,500,2);
     cout << "Linked List: ";
     PrintLinkedList(head);
+    cout << "Insert before value k" << endl;;
+    head = InsertBeforeValueK(head,88,7);
+    cout << "Linked List: ";
+    PrintLinkedList(head);
+
     
     return 0;
 }

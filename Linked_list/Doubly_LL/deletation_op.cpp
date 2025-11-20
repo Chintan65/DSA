@@ -98,7 +98,33 @@ Node* DeletKthNode(Node* head, int k){
     }
 }
 Node* DeletKElement(Node* head, int k){
-    
+    Node* temp = head;
+    while(temp -> data != k) temp = temp -> next;
+    if(temp -> back == nullptr and temp->next == nullptr){
+        delete temp;
+        return nullptr;
+    }
+    else if(temp -> back == nullptr){
+        head = head -> next;
+        head -> back = nullptr;
+        temp -> next = nullptr;
+        delete temp;
+        return head;
+    }
+    else if(temp -> next == nullptr){
+        temp -> back -> next = nullptr;
+        temp -> back = nullptr;
+        delete temp;
+        return head;
+    }
+    else {
+        temp -> back -> next = temp -> next;
+        temp -> next -> back = temp -> back;
+        temp -> next = nullptr;
+        temp -> back = nullptr;
+        delete temp;
+        return head;
+    }
 }
 int main(){
     ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -125,9 +151,5 @@ int main(){
     cout << "deletation of k element" << endl;
     head = DeletKElement(head,23);
     PrintLinkedList(head);
-
-
-
-    
     return 0;
 }

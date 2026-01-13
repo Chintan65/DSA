@@ -101,11 +101,9 @@ head->next->next = new ListNode(12);
 head->next->next->child = new ListNode(13); // Sorted
 head->next->next->child->child = new ListNode(20); // Sorted
 
-    // Print the original linked list structure
     cout << "Original linked list:" << endl;
     printOriginalLinkedList(head, 0);
 
-    // Creating an instance of Solution class
     Solution sol;
     
     // Function call to flatten the linked list

@@ -84,5 +84,34 @@ int main(){
     // for zero or negative numbers, it is not power of two 
     // Time complexity of above operation is O(1) 
     else cout << a << " is not power of two\n";
+    // trick 12: __builtin_parity
+    // returns 1 if number of set bits is odd else returns 0
+    int parity = __builtin_parity(a);
+    cout << "Parity of " << a << " = " << parity << "\n";
+    // for long long use __builtin_parityll
+    int parityll = __builtin_parityll((long long)a); // Time complexity O(1)
+    cout << "Parity of " << a << " (using __builtin_parityll) = " << parityll << "\n";
+    // trick 13: __builtin_ctz  -> help in finding LSB (least significant bit)
+    // for 0 input, the result is undefined
+    // returns the number of trailing zeros in binary representation
+    int ctz = __builtin_ctz(a); // Time complexity O(1)
+    cout << "Number of trailing zeros in " << a << " = " << ctz << "\n";
+    // for long long use __builtin_ctzll
+    int ctzll = __builtin_ctzll((long long)a);
+    cout << "Number of trailing zeros in " << a << " (using __builtin_ctzll) = " << ctzll << "\n";
+    // trick 14: __builtin_clz -> help in finding MSB (most significant bit)
+    // for 0 input, the result is undefined
+    int clz = __builtin_clz(a); // Time complexity O(1)
+    cout << "Number of leading zeros in " << a << " = " << clz << "\n";
+    // for long long use __builtin_clzll
+    int clzll = __builtin_clzll((long long)a);
+    cout << "Number of leading zeros in " << a << " (using __builtin_clzll) = " << clzll << "\n";   
+    // returns the number of leading zeros in binary representation
+    // trick 15: number of flipped bits to convert a to b
+    int a1 = 29; // Binary: 11101
+    int b1 = 15; // Binary: 01111
+    int flipped_bits = a1 ^ b1; // XOR will give bits which are different
+    int num_flipped_bits = __builtin_popcount(flipped_bits); // count set bits
+    cout << "Number of bits to be flipped to convert " << a1 << " to " << b1 << " = " << num_flipped_bits << "\n";
     return 0;
 }
